@@ -1,1 +1,62 @@
-<p>form-login works!</p>
+<section class="form-login">
+  <header class="header-login"></header>
+  <main class="main-login">
+    <figure class="figure-login">
+      <object
+        data="../../assets/images/logo.svg"
+        type="image/svg+xml"
+        class="logo"
+      >
+        Your browser does not support SVG. Please use a modern browser to view
+        the logo.
+      </object>
+    </figure>
+    <section>
+      <article>
+        <p>
+          Boas-vindas ao Portal! <br />
+          Para começar, qual seu email ou CPF?
+        </p>
+        <p>Precisamos desta confirmação para dar início ao seu acesso.</p>
+      </article>
+
+      <article>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput [type]="hide() ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="clickEvent($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide()"
+          >
+            <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email ou CPF</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+        </mat-form-field>
+      </article>
+    </section>
+    <section>
+      <button mat-button>ACESSAR</button>
+    </section>
+  </main>
+  <footer class="footer-login">
+    <section>
+      <p>Esqueceu a senha? <a href="#">Acesse aqui</a></p>
+    </section>
+    <section>
+      <p>Versão {{ version }}</p>
+    </section>
+  </footer>
+</section>
