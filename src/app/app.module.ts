@@ -8,13 +8,17 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FormLoginComponent } from './modules/form-login/form-login.component';
 import { BackgroundLoginComponent } from './modules/background-login/background-login.component';
+import { NavbarComponent } from './modules/navbar/navbar.component';
+import { HeaderComponent } from './modules/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    BackgroundLoginComponent
+    BackgroundLoginComponent,
+    NavbarComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
