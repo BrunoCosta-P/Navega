@@ -10,6 +10,9 @@ import { FormLoginComponent } from './modules/form-login/form-login.component';
 import { BackgroundLoginComponent } from './modules/background-login/background-login.component';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { HeaderComponent } from './modules/header/header.component';
+import { ContributionComponent } from './modules/contribution/contribution.component';
+import { PlansComponent } from './modules/plans/plans.component';
+import { EmptyStateComponent } from './modules/empty-state/empty-state.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +21,19 @@ import { HeaderComponent } from './modules/header/header.component';
     HomeComponent,
     BackgroundLoginComponent,
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContributionComponent,
+    EmptyStateComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     FormLoginComponent,
+    PlansComponent,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

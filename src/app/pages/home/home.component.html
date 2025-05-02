@@ -1,6 +1,17 @@
-<header></header>
+<header>
+  <app-header class="header-home" />
+</header>
 <main>
-  <nav></nav>
-  <aside></aside>
-  <section></section>
+  <app-navbar class="navbar-home" />
+
+  <section class="home-container">
+    <app-plans class="plans-home" (sendPath)="showPlan($event)" />
+
+    <div class="contribution-home">
+      <ng-container
+        class="contribution-home"
+        [ngComponentOutlet]="componenteDinamico"
+      ></ng-container>
+    </div>
+  </section>
 </main>
