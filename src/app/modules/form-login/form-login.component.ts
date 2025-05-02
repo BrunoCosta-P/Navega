@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,11 +41,12 @@ export class FormLoginComponent implements OnInit {
   errorMessage = signal('');
   hide = signal(true);
 
-  constructor() {
+  constructor(private readonly router: Router) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
+
 
   ngOnInit(): void {
     this.version = '0.1.0';
@@ -64,4 +66,13 @@ export class FormLoginComponent implements OnInit {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
+
+  irParaHome() {
+    // if (this.email.invalid) {
+    //   this.email.markAsTouched();
+    //   return;
+    // }
+    this.router.navigate(['/home']);
+  }
 }
+
