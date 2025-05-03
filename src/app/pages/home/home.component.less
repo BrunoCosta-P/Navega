@@ -10,7 +10,7 @@ header {
 }
 
 main {
-  .display-mixin(flex, column, center, center, 100vw, calc(100vh - 5rem));
+  .display-mixin(flex, column, center, center, 100vw, max-content);
 
   .navbar-home {
     .size-mixin(100%; 3.563rem);
@@ -21,17 +21,14 @@ main {
   }
 
   .home-container {
- 
-   
-    .display-mixin(flex, row, center, center, 100%, 100%);
+    .display-mixin(flex, row, flex-start, center, 100%, 100%);
 
     .plans-home {
       .size-mixin(24.125rem; 100%);
     }
 
     .contribution-home {
-        .size-mixin(calc(71rem - 24.125rem); 100%);
-
+      .size-mixin(calc(71rem - 24.125rem), max-content);
     }
   }
 }

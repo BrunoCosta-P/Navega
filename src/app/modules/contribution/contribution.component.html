@@ -1,5 +1,16 @@
 <main>
-  <section></section>
+  <section class="chart-container">
+
+    <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [labels]="chartOptions.labels"
+    [dataLabels]="chartOptions.dataLabels"
+    [responsive]="chartOptions.responsive"
+    [legend]="chartOptions.legend"
+  ></apx-chart>
+    
+  </section>
   <section class="card-container">
     <ng-container *ngFor="let contribution of contributions">
       <mat-card class="card">
