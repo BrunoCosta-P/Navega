@@ -12,7 +12,7 @@ interface ComponentMap {
 })
 export class HomeComponent implements OnInit {
   componenteDinamico: any;
-  variavelDeControle: string = 'emptyState';
+  variavelDeControle: string = 'contribution';
 
   constructor() {}
 
@@ -34,8 +34,4 @@ export class HomeComponent implements OnInit {
     this.componenteDinamico = componentMap[this.variavelDeControle] ?? null;
   }
 
-  mudarComponente(novoValor: string) {
-    this.variavelDeControle = novoValor;
-    this.atualizarComponenteDinamico();
-  }
 }
