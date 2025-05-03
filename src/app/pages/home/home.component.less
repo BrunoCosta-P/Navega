@@ -2,10 +2,10 @@
 
 header {
   background-color: @color-secondary-60;
-  .size-mixin(100vw; 5rem);
+  .display-mixin(flex, column, center, center, 100vw, 5rem);
 
   .header-home {
-    .size-mixin();
+    .size-mixin(71rem; 100%);
   }
 }
 
@@ -13,7 +13,9 @@ main {
   .display-mixin(flex, column, center, center, 100vw, calc(100vh - 5rem));
 
   .navbar-home {
-    .size-mixin(71rem; 3.563rem);
+    .size-mixin(100%; 3.563rem);
+    max-width: 71rem;
+
     border-bottom: solid 1px @color-gray-50;
     margin-bottom: 1rem;
   }

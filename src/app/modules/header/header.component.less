@@ -1,0 +1,21 @@
+@import url("../../../assets/style/index.less");
+main {
+  .display-mixin(flex, row, center, space-between, 71rem, 100%);
+
+  .header-perfil {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    border: solid 0.1rem red;
+  }
+
+  .header-links {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    .header-svg{
+        cursor: pointer;
+    }
+  }
+}
