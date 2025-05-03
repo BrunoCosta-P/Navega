@@ -1,13 +1,31 @@
-<header></header>
+<header>
+  <section class="header-logo">
+    <object
+      data="../../assets/images/address-card.svg"
+      type="image/svg+xml"
+    >
+      <p>Your browser does not support SVGs. Please download the image <a href="../../assets/images/address-card.svg">here</a>.</p>
+    </object>
+  </section>
+  <section>
+    <p class="header-title">Meu plano</p>
+    <p class="header-subtitle">O que você quer fazer?</p>
+  </section>
+</header>
 <main>
-  <ng-container  *ngFor="let plan of plans">
-    <section class="container-list" (click)="emitirInformacao(plan.path)" (keydown)="emitirInformacao(plan.path)">
+  <ng-container *ngFor="let plan of plans">
+    <section
+      class="container-list"
+      routerLinkActive="active-link"
+      (click)="emitirInformacao(plan.path)"
+      (keydown)="emitirInformacao(plan.path)"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="home"
       />
-      <p>{{ plan.label }}</p>
+      <p routerLinkActive="active-link">{{ plan.label }}</p>
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"

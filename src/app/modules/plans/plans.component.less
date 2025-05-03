@@ -1,12 +1,49 @@
+@import url("../../../assets/style/index.less");
+
+.text-mixin(@align: center; @color: #000;) {
+  text-align: @align;
+  color: @color;
+}
+
+header {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+
+  .header-logo {
+    .display-mixin(flex, column , center, space-between, 100%, 3.75rem);
+  }
+
+  .header-title {
+    &:extend(.title-semibold);
+    .text-mixin( center, @color-gray-90);
+  }
+  .header-subtitle {
+    &:extend(.title-regular);
+    .text-mixin( center, @color-gray-90);
+  }
+}
+
 main {
   padding: 1rem;
+
   .container-list {
-    border: solid 1px #000;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 21rem;
-    height: 2rem;
+    &:extend(.title-regular);
+    .display-mixin(flex, row, center, space-between, 21rem, 4rem);
+    padding: 1rem 0;
+    border-bottom: solid 1px @color-gray-50;
+    cursor: pointer;
+
+    &.active-link {
+      background-color: red;
+      color: green;
+
+      mat-icon {
+        color: darken(blue, 10%);
+      }
+
+      p {
+        color: red;
+      }
+    }
   }
 }
