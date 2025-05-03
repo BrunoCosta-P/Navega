@@ -1,0 +1,11 @@
+.size-mixin(@width: 100%; @height: 100%) {
+  width: @width;
+  height: @height;
+}
+.display-mixin(@display: "flex"; @direction: "row"; @align: "center"; @justify: "center"; @width: "100vw"; @height: "100vh") {
+  display: @display;
+  flex-direction: @direction;
+  align-items: @align;
+  justify-content: @justify;
+  .size-mixin(@width; @height);
+}
