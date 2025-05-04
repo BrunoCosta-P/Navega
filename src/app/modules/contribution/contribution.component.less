@@ -18,6 +18,7 @@ main {
   .chart-container {
     .display-chart-mixin();
     height: max-content;
+    border-bottom: solid 1px @color-gray-50;
 
     .chart-header {
       .display-chart-mixin();
@@ -49,6 +50,10 @@ main {
         color: @color-gray-90;
         text-align: center;
         margin-bottom: 0.5rem;
+
+        &:last-child {
+          margin-bottom: 1rem;
+        }
       }
     }
   }

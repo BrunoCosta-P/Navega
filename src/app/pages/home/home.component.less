@@ -5,7 +5,6 @@ header {
   .display-mixin(flex, column, center, center, 100%, 5rem);
   overflow: hidden;
 
-
   .header-home {
     .size-mixin(100%; 100%);
     max-width: 71rem;
@@ -13,7 +12,6 @@ header {
 }
 
 main {
-
   .display-mixin(flex, column, center, center,100%, max-content);
   padding-bottom: 5.674rem;
 
@@ -38,9 +36,17 @@ main {
   }
 }
 
-
 @media screen and (max-width: 768px) {
   header {
-    display: none
-  }}
+    display: none;
+  }
 
+  main {
+    padding: 0 2rem;
+    .home-container {
+      .plans-home {
+        display: none;
+      }
+    }
+  }
+}
