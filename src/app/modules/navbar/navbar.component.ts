@@ -1,28 +1,29 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ResponsivenessService } from 'src/app/shared/services/responsiveness.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.less'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
-  mobileBreakpoint: number = 768; // Defina o breakpoint que você considera "mobile"
+  private mobileSubscription: Subscription | undefined;
 
-  constructor() {
-    this.checkScreenWidth(); // Verifica a largura inicial da tela
-  }
+  constructor(private readonly responsivenessService: ResponsivenessService) {}
 
   ngOnInit(): void {
-    this.checkScreenWidth(); // Garante que a verificação seja feita na inicialização
+    this.mobileSubscription = this.responsivenessService.isMobile$.subscribe(
+      (isMobile) => {
+        this.isMobile = isMobile;
+      }
+    );
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.checkScreenWidth(); // Verifica a largura da tela sempre que a janela é redimensionada
-  }
-
-  checkScreenWidth(): void {
-    this.isMobile = window.innerWidth < this.mobileBreakpoint;
+  ngOnDestroy(): void {
+    if (this.mobileSubscription) {
+      this.mobileSubscription.unsubscribe();
+    }
   }
 }
