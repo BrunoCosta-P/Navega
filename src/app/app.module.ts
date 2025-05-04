@@ -13,6 +13,8 @@ import { HeaderComponent } from './modules/header/header.component';
 import { ContributionComponent } from './modules/contribution/contribution.component';
 import { PlansComponent } from './modules/plans/plans.component';
 import { EmptyStateComponent } from './modules/empty-state/empty-state.component';
+import { PlansService, RealPlanService } from './shared/services/plans.service';
+import { ContributionService, RealContributionService } from './shared/services/contribution.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,10 @@ import { EmptyStateComponent } from './modules/empty-state/empty-state.component
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: PlansService, useClass: RealPlanService },
+    { provide: ContributionService, useClass: RealContributionService }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

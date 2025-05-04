@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RealPipe, PercentCustomPipe } from '../../shared/pipes/index.pipe';
+import { ContributionService, Contribution } from '../../shared/services/contribution.service';
 
 import {
   ChartComponent,
@@ -26,13 +27,6 @@ export type ChartOptions = {
   colors: string[];
 };
 
-interface Contribution {
-  percentage?: number;
-  value: number;
-  name: string;
-  color: string;
-}
-
 @Component({
   selector: 'app-contribution',
   templateUrl: './contribution.component.html',
@@ -49,15 +43,12 @@ interface Contribution {
 })
 export class ContributionComponent {
 
-  contributions: Contribution[] = [
-    { value: 500, name: 'Contribuição mensal', percentage: 5, color:'#594CBE' },
-    { value: 200, name: 'Contribuição voluntária', color:'#E22E6F' },
-  ];
+  contributions: Contribution[] = [];
 
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: ChartOptions;
 
-  constructor() {
+  constructor( private readonly contributionService: ContributionService) {
     this.chartOptions = {
       series: [],
       chart: {
@@ -95,7 +86,10 @@ export class ContributionComponent {
   }
 
   ngOnInit(): void {
-    this.updateChartData();
+    this.contributionService.getContribution().subscribe((data) => {
+      this.contributions = data;
+      this.updateChartData();
+    });
   }
 
   updateChartData(): void {
