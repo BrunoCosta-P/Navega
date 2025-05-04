@@ -36,30 +36,42 @@
     }
   }
 
-  .footer-login{
-    .btn-footer{
+  .footer-login {
+    .btn-footer {
       &:extend(.secondary-label-button);
       color: @color-white-100;
       background-color: @color-primary-60;
-      max-width: 17rem;
       width: 100%;
+      max-width: 17rem;
     }
 
-    .recover-password{
+    .recover-password {
       &:extend(.title-regular);
       margin: 1rem 0;
       color: @color-gray-90;
       text-align: center;
-      a{
+      a {
         color: @color-primary-60;
       }
     }
 
-    .version-footer{
+    .version-footer {
       &:extend(.Paragraph-Regular);
       color: @color-gray-90;
       text-align: center;
     }
   }
+}
 
+@media screen and (max-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-login {
+    margin: 1.531rem;
+    width: calc(100vw - 1.531rem * 2);
+  }
 }

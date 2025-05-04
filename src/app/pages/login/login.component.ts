@@ -5,7 +5,7 @@ import { ResponsivenessService } from 'src/app/shared/services/responsiveness.se
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./loginDesk.component.less', './loginMobile.component.less']
+  styleUrls: ['./loginDesk.component.less']
 })
 export class LoginComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
