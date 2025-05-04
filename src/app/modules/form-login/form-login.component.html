@@ -1,6 +1,5 @@
 <section class="form-login">
-  <header class="header-login"></header>
-  <main class="main-login">
+  <header class="header-login">
     <figure class="figure-login">
       <object
         data="../../assets/images/logo.svg"
@@ -11,17 +10,34 @@
         the logo.
       </object>
     </figure>
+  </header>
+  <main class="main-login">
     <section>
-      <article>
-        <p>
+      <article class="container-title-login">
+        <p class="title-login">
           Boas-vindas ao Portal! <br />
           Para começar, qual seu email ou CPF?
         </p>
-        <p>Precisamos desta confirmação para dar início ao seu acesso.</p>
+        <p class="subtitle-login">
+          Precisamos desta confirmação para dar início ao seu acesso.
+        </p>
       </article>
 
-      <article>
-        <mat-form-field>
+      <article class="container-form-login">
+        <mat-form-field class="input-email">
+          <mat-label>Email ou CPF</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            (blur)="updateErrorMessage()"
+            required
+          />
+          <mat-icon matSuffix>check_circle_outline</mat-icon>
+          <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="input-password">
           <mat-label>Senha</mat-label>
           <input matInput [type]="hide() ? 'password' : 'text'" />
           <button
@@ -34,29 +50,14 @@
             <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Email ou CPF</mat-label>
-          <input
-            matInput
-            placeholder="pat@example.com"
-            [formControl]="email"
-            (blur)="updateErrorMessage()"
-            required
-          />
-          <mat-error *ngIf="email.invalid">{{ errorMessage() }}</mat-error>
-        </mat-form-field>
       </article>
-    </section>
-    <section>
-      <button mat-button (click)="irParaHome()">ACESSAR</button>
     </section>
   </main>
   <footer class="footer-login">
-    <section>
-      <p>Esqueceu a senha? <a href="#">Acesse aqui</a></p>
-    </section>
-    <section>
-      <p>Versão {{ version }}</p>
-    </section>
+    <button mat-raised-button class="btn-footer" (click)="irParaHome()">ACESSAR</button>
+
+    <p class="recover-password">Esqueceu a senha? <a href="#">Acesse aqui</a></p>
+
+    <p class="version-footer">Versão {{ version }}</p>
   </footer>
 </section>

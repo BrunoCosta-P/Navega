@@ -1,0 +1,65 @@
+@import url("../../../assets/style/index.less");
+.form-login {
+  .display-mixin(@display: flex, column, center, space-around, 22.5rem, 42.5rem);
+  margin: 4.063rem 5.625rem;
+
+  .main-login {
+    .display-mixin(@display: flex, column, center, center, 100%, 15.75rem);
+
+    .container-title-login {
+      .display-mixin(@display: flex, column, center, space-between, 100%, fit-content);
+      gap: 0.625rem;
+      margin-bottom: 2rem;
+
+      .title-login {
+        &:extend(.title-semibold);
+        text-align: center;
+      }
+
+      .subtitle-login {
+        &:extend(.title-regular);
+        color: @color-gray-90;
+        text-align: center;
+      }
+    }
+
+    .container-form-login {
+      width: 100%;
+
+      .input-email {
+        width: 100%;
+      }
+
+      .input-password {
+        width: 100%;
+      }
+    }
+  }
+
+  .footer-login{
+    .btn-footer{
+      &:extend(.secondary-label-button);
+      color: @color-white-100;
+      background-color: @color-primary-60;
+      max-width: 17rem;
+      width: 100%;
+    }
+
+    .recover-password{
+      &:extend(.title-regular);
+      margin: 1rem 0;
+      color: @color-gray-90;
+      text-align: center;
+      a{
+        color: @color-primary-60;
+      }
+    }
+
+    .version-footer{
+      &:extend(.Paragraph-Regular);
+      color: @color-gray-90;
+      text-align: center;
+    }
+  }
+
+}

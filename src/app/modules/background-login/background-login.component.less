@@ -1,7 +1,48 @@
-.main-background {
-  height: 50rem;
-  width: 70rem;
-  background: url("../../../assets/images/background-login.svg") no-repeat
-    center center fixed;
-  background-size: contain;
+@import url("../../../assets/style/index.less");
+main {
+  height: 100vh;
+  width: calc(100vw - 22.5rem - 5.625rem);
+  overflow: hidden;
+  position: relative;
+
+
+  .background{
+    background-image: url(../../../assets/images/background-login.jpg) ;
+    background-size: cover;
+    transform: rotate(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 90%;
+  }
+  
+
+  .container-background{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
+    
+
+    .img{
+      position: absolute;
+      top: -10%;
+      width: 70%;
+      height: 80%;
+    }
+
+    p{
+      &:extend(.title);
+      position: absolute;
+      bottom: 30%;
+      color: @color-white-100;
+      text-align: center;
+    }
+  }
 }
