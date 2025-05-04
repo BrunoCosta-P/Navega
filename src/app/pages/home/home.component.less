@@ -7,7 +7,8 @@ header {
 
 
   .header-home {
-    .size-mixin(71rem; 100%);
+    .size-mixin(100%; 100%);
+    max-width: 71rem;
   }
 }
 
@@ -36,3 +37,10 @@ main {
     }
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  header {
+    display: none
+  }}
+
