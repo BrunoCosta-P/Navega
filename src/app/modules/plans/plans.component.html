@@ -20,11 +20,7 @@
       (click)="emitirInformacao(plan.path)"
       (keydown)="emitirInformacao(plan.path)"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="home"
-      />
+    <img [src]="plan.icon" alt="{{ plan.label }} icon">
       <p routerLinkActive="active-link">{{ plan.label }}</p>
       <mat-icon
         aria-hidden="false"

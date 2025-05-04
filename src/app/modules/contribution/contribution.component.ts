@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { RealPipe, PercentCustomPipe } from '../../shared/pipes/index.pipe';
 
 import {
@@ -38,6 +39,7 @@ interface Contribution {
   styleUrls: ['./contribution.component.less'],
   standalone: true,
   imports: [
+    MatIconModule,
     MatCardModule,
     CommonModule,
     RealPipe,
@@ -46,6 +48,7 @@ interface Contribution {
   ],
 })
 export class ContributionComponent {
+
   contributions: Contribution[] = [
     { value: 500, name: 'Contribuição mensal', percentage: 5, color:'#594CBE' },
     { value: 200, name: 'Contribuição voluntária', color:'#E22E6F' },

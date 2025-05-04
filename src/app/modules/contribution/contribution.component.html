@@ -15,21 +15,38 @@
         [colors]="chartOptions.colors"
       ></apx-chart>
     </figure>
-    <footer class="chart-footer">
+    <main class="chart-footer">
       <ng-container *ngFor="let contribution of contributions">
         <div class="chart-title-footer">
-          <p >{{contribution.name}}</p>
+          <p>{{ contribution.name }}</p>
         </div>
         <p class="chart-value-footer">{{ contribution.value | real }}</p>
       </ng-container>
-    </footer>
+    </main>
   </section>
+
   <section class="card-container">
     <ng-container *ngFor="let contribution of contributions">
       <mat-card class="card">
         <mat-card-header class="card-header">
-          {{ contribution.name }}</mat-card-header
-        >
+          <div>
+            <object
+              data="../../assets/images/coins.svg"
+              type="image/svg+xml"
+              class="header-svg"
+            >
+              Your browser does not support SVG. Please use a modern browser to
+              view the logo.
+            </object>
+            {{ contribution.name }}
+          </div>
+
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="chevron_right"
+          />
+        </mat-card-header>
         <mat-card-content class="card-content">
           <mat-card-title class="card-content-text">
             <p class="card-text">Valor da contribuição</p>
@@ -52,5 +69,8 @@
       </mat-card>
     </ng-container>
   </section>
-  <button mat-button>incluir contribuição</button>
+
+  <footer>
+    <button mat-raised-button class="btn-footer">incluir contribuição</button>
+  </footer>
 </main>

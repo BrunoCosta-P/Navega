@@ -2,7 +2,9 @@
 
 header {
   background-color: @color-secondary-60;
-  .display-mixin(flex, column, center, center, 100vw, 5rem);
+  .display-mixin(flex, column, center, center, 100%, 5rem);
+  overflow: hidden;
+
 
   .header-home {
     .size-mixin(71rem; 100%);
@@ -10,7 +12,9 @@ header {
 }
 
 main {
-  .display-mixin(flex, column, center, center, 100vw, max-content);
+
+  .display-mixin(flex, column, center, center,100%, max-content);
+  padding-bottom: 5.674rem;
 
   .navbar-home {
     .size-mixin(100%; 3.563rem);
