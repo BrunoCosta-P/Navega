@@ -1,15 +1,28 @@
 <main>
   <section class="chart-container">
-
-    <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [labels]="chartOptions.labels"
-    [dataLabels]="chartOptions.dataLabels"
-    [responsive]="chartOptions.responsive"
-    [legend]="chartOptions.legend"
-  ></apx-chart>
-    
+    <header class="chart-header">
+      <h2 class="chart-title">Total em contribuições</h2>
+      <h3 class="chart-subtitle">{{ sumContributionValues() | real }}</h3>
+    </header>
+    <figure class="chart-figure">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [labels]="chartOptions.labels"
+        [dataLabels]="chartOptions.dataLabels"
+        [responsive]="chartOptions.responsive"
+        [legend]="chartOptions.legend"
+        [colors]="chartOptions.colors"
+      ></apx-chart>
+    </figure>
+    <footer class="chart-footer">
+      <ng-container *ngFor="let contribution of contributions">
+        <div class="chart-title-footer">
+          <p >{{contribution.name}}</p>
+        </div>
+        <p class="chart-value-footer">{{ contribution.value | real }}</p>
+      </ng-container>
+    </footer>
   </section>
   <section class="card-container">
     <ng-container *ngFor="let contribution of contributions">
@@ -20,14 +33,18 @@
         <mat-card-content class="card-content">
           <mat-card-title class="card-content-text">
             <p class="card-text">Valor da contribuição</p>
-            <p class="card-value">{{ contribution.value | real }}</p></mat-card-title
+            <p class="card-value">
+              {{ contribution.value | real }}
+            </p></mat-card-title
           >
           <mat-card-title
             class="card-content-text"
             *ngIf="contribution.percentage"
           >
             <p class="card-text">Porcentagem do salário</p>
-            <p class="card-value">{{ contribution.percentage | percentCustom }}</p></mat-card-title
+            <p class="card-value">
+              {{ contribution.percentage | percentCustom }}
+            </p></mat-card-title
           >
 
           <button class="bnt-card" mat-button>alterar contribuição</button>

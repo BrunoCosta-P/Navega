@@ -22,12 +22,14 @@ export type ChartOptions = {
   labels: any;
   legend: ApexLegend;
   dataLabels: ApexDataLabels;
+  colors: string[];
 };
 
 interface Contribution {
   percentage?: number;
   value: number;
   name: string;
+  color: string;
 }
 
 @Component({
@@ -45,26 +47,25 @@ interface Contribution {
 })
 export class ContributionComponent {
   contributions: Contribution[] = [
-    { value: 2, name: 'home', percentage: 10 },
-    { value: 3, name: 'list' },
-    { value: 4, name: 'settings' },
-    { value: 5, name: 'info' },
+    { value: 500, name: 'Contribuição mensal', percentage: 5, color:'#594CBE' },
+    { value: 200, name: 'Contribuição voluntária', color:'#E22E6F' },
   ];
 
   @ViewChild('chart') chart!: ChartComponent;
-  public chartOptions: ChartOptions; 
+  public chartOptions: ChartOptions;
 
   constructor() {
     this.chartOptions = {
       series: [],
       chart: {
-        width: 380,
+        width: 300,
         type: 'donut',
       },
       dataLabels: {
         enabled: false,
       },
       legend: {
+        show:false,
         position: 'bottom',
         formatter: function (val, opts) {
           return val + ' - ' + opts.w.globals.series[opts.seriesIndex];
@@ -78,12 +79,15 @@ export class ContributionComponent {
               width: 200,
             },
             legend: {
+              show:false,
               position: 'bottom',
             },
           },
         },
       ],
       labels: [],
+
+      colors: [],
     };
   }
 
@@ -97,6 +101,16 @@ export class ContributionComponent {
     );
     this.chartOptions.labels = this.contributions.map(
       (contribution) => contribution.name
+    );
+    this.chartOptions.colors = this.contributions.map(
+      (contribution) => contribution.color
+    );
+  }
+
+  sumContributionValues(): number {
+    return this.contributions.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.value,
+      0
     );
   }
 }

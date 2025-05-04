@@ -5,15 +5,53 @@
   color: @color-gray-90;
 }
 
+.display-chart-mixin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 main {
   width: 100%;
 
-  .chart-container{
-    display: flex;
-    justify-content: center;
-    height: 19.326rem;
-  }
+  .chart-container {
+    .display-chart-mixin();
+    height: max-content;
 
+    .chart-header {
+      .display-chart-mixin();
+
+      .chart-title {
+        .typography-mixin;
+      }
+
+      .chart-subtitle {
+        &:extend(.title-semibold);
+        color: @color-gray-90;
+      }
+    }
+
+    .chart-figure{
+      margin: 1rem 0;
+    }
+    .chart-footer {
+      .display-chart-mixin();
+
+      .chart-title-footer {
+        &:extend(.title-regular);
+        color: @color-gray-90;
+        text-align: center;
+      }
+
+      .chart-value-footer{
+        &:extend(.title-semibold);
+        color: @color-gray-90;
+        text-align: center;
+        margin-bottom: .5rem;
+      }
+    }
+  }
 
   .card-container {
     padding: 1rem 0;
@@ -48,7 +86,6 @@ main {
         .bnt-card {
           &:extend(.secondary-label-button);
           .size-mixin(19.5rem; 2.5rem);
-
           color: @color-primary-60;
         }
       }
