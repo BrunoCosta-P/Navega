@@ -9,17 +9,17 @@ export class PercentCustomPipe implements PipeTransform {
     if (value === null || value === undefined) {
       return '';
     }
-
+  
     let numericValue: number;
     if (typeof value === 'string') {
-      numericValue = parseFloat(value.replace(',', '.'));
-      if (isNaN(numericValue)) {
+      if (!/^-?\d+([.,]\d+)?$/.test(value)) {
         return 'Valor Inválido';
       }
+      numericValue = parseFloat(value.replace(',', '.'));
     } else {
       numericValue = value;
     }
-
+  
     return `${numericValue}%`;
   }
 }

@@ -2,7 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   signal,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import {
   FormControl,
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { merge } from 'rxjs';
+import { Subject, merge } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-login',
@@ -35,21 +37,26 @@ import { merge } from 'rxjs';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormLoginComponent implements OnInit {
+export class FormLoginComponent implements OnInit, OnDestroy {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   version: string = '';
   errorMessage = signal('');
   hide = signal(true);
+  private destroy$ = new Subject<void>(); 
 
-  constructor(private readonly router: Router) {
-    merge(this.email.statusChanges, this.email.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessage());
-  }
-
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {
     this.version = '0.1.0';
+
+    merge(this.email.statusChanges, this.email.valueChanges)
+      .pipe(takeUntil(this.destroy$)) 
+      .subscribe(() => this.updateErrorMessage());
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(); 
+    this.destroy$.complete(); 
   }
 
   updateErrorMessage() {
@@ -68,10 +75,10 @@ export class FormLoginComponent implements OnInit {
   }
 
   irParaHome() {
-    // if (this.email.invalid) {
-    //   this.email.markAsTouched();
-    //   return;
-    // }
+    if (this.email.invalid) {
+      this.email.markAsTouched();
+      return;
+    }
     this.router.navigate(['/home']);
   }
 }
