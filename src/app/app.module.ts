@@ -24,7 +24,6 @@ import { ContributionService, RealContributionService } from './shared/services/
     BackgroundLoginComponent,
     NavbarComponent,
     HeaderComponent,
-    EmptyStateComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +33,7 @@ import { ContributionService, RealContributionService } from './shared/services/
     PlansComponent,
     AppRoutingModule,
     BrowserAnimationsModule,
+    EmptyStateComponent,
   ],
   providers: [
     { provide: PlansService, useClass: RealPlanService },
