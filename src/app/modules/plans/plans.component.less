@@ -33,16 +33,19 @@ main {
     border-bottom: solid 1px @color-gray-50;
     cursor: pointer;
 
-    &.active-link {
-      background-color: red;
-      color: green;
+    .icon-primary {
+      stroke: @color-gray-90;
+    }
 
-      mat-icon {
-        color: darken(blue, 10%);
+    &.active {
+      color: @color-primary-60;
+
+      .icon-primary {
+        stroke: @color-primary-60;
       }
 
       p {
-        color: red;
+        color: @color-primary-60;
       }
     }
   }

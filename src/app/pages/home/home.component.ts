@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit {
     const componentMap: ComponentMap = {
       contribution: ContributionComponent,
       emptyState: EmptyStateComponent,
+      extraContribution: EmptyStateComponent,
+      extract: EmptyStateComponent,
+      documents: EmptyStateComponent,
+      taxation: EmptyStateComponent,
+      benefit: EmptyStateComponent,
+      regressive: EmptyStateComponent,
+      information: EmptyStateComponent,
     };
 
     this.componenteDinamico = componentMap[this.variavelDeControle] ?? null;

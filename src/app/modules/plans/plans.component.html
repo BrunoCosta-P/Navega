@@ -1,10 +1,10 @@
 <header>
   <section class="header-logo">
-    <object
-      data="../../assets/images/address-card.svg"
-      type="image/svg+xml"
-    >
-      <p>Your browser does not support SVGs. Please download the image <a href="../../assets/images/address-card.svg">here</a>.</p>
+    <object data="../../assets/images/address-card.svg" type="image/svg+xml">
+      <p>
+        Your browser does not support SVGs. Please download the image
+        <a href="../../assets/images/address-card.svg">here</a>.
+      </p>
     </object>
   </section>
   <section>
@@ -16,11 +16,16 @@
   <ng-container *ngFor="let plan of plans">
     <section
       class="container-list"
-      routerLinkActive="active-link"
+      [class.active]="activePath === plan.path"
       (click)="emitirInformacao(plan.path)"
       (keydown)="emitirInformacao(plan.path)"
     >
-    <img [src]="plan.icon" alt="{{ plan.label }} icon">
+      <mat-icon
+        *ngIf="plan.labelIcon"
+        [svgIcon]="plan.labelIcon"
+        class="icon-primary"
+      ></mat-icon>
+
       <p routerLinkActive="active-link">{{ plan.label }}</p>
       <mat-icon
         aria-hidden="false"

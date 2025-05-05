@@ -19,7 +19,7 @@ export class RealPlanService extends PlansService {
   override getPlans(): Observable<Plan[]> {
     return of([
       {
-        path: 'emptyState',
+        path: 'extract',
         icon: '../../assets/images/file-invoice-dollar.svg',
         label: 'Ver extrato',
         labelIcon: 'info',
@@ -31,37 +31,37 @@ export class RealPlanService extends PlansService {
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'extraContribution',
         icon: '../../assets/images/sack-dollar.svg',
         label: 'Contribuição Extra',
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'documents',
         icon: '../../assets/images/file-alt.svg',
         label: 'Documentos',
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'taxation',
         icon: '../../assets/images/user-chart.svg',
         label: 'Regime de Tributação',
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'benefit',
         icon: '../../assets/images/comment-dollar.svg',
         label: 'Solicitar Benefício',
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'regressive',
         icon: '../../assets/images/file-chart-line.svg',
         label: 'Extrato Regressivo',
         labelIcon: 'info',
       },
       {
-        path: 'emptyState',
+        path: 'information',
         icon: '../../assets/images/info.svg',
         label: 'Informações',
         labelIcon: 'info',
