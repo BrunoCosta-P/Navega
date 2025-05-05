@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ResponsivenessService } from 'src/app/shared/services/responsiveness.service';
+import { ResponsivenessService } from '../../shared/services/responsiveness.service';
 
 @Component({
   selector: 'app-login',
