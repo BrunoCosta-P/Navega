@@ -18,6 +18,7 @@
     <main class="chart-footer">
       <ng-container *ngFor="let contribution of contributions">
         <div class="chart-title-footer">
+          <span class="color-circle" [style.backgroundColor]="contribution.color"></span>
           <p>{{ contribution.name }}</p>
         </div>
         <p class="chart-value-footer">{{ contribution.value | real }}</p>

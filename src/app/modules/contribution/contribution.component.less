@@ -43,6 +43,17 @@ main {
         &:extend(.title-regular);
         color: @color-gray-90;
         text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .color-circle {
+          display: inline-block;
+          width: 0.625rem; 
+          height: 0.625rem; 
+          border-radius: 50%; 
+          margin-right: 5px; 
+        }
       }
 
       .chart-value-footer {
