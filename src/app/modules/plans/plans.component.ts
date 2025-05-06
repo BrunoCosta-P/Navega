@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Plan, PlansService } from '../../shared/services/plans.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ResponsivenessService } from '../../shared/services/responsiveness.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-plans',
@@ -33,16 +35,27 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class PlansComponent {
   @Output() sendPath = new EventEmitter<string>();
+  @Output() closePlans = new EventEmitter<string>();
+
   activePath: string = 'contribution';
   plans: Plan[] = [];
+  isMobile: boolean = false;
+  private mobileSubscription: Subscription | undefined;
 
   constructor(
     private readonly planService: PlansService,
     private readonly sanitizer: DomSanitizer,
-    private readonly matIconRegistry: MatIconRegistry
+    private readonly matIconRegistry: MatIconRegistry,
+    private readonly responsivenessService: ResponsivenessService
   ) {}
 
   ngOnInit(): void {
+    this.mobileSubscription = this.responsivenessService.isMobile$.subscribe(
+      (isMobile) => {
+        this.isMobile = isMobile;
+      }
+    );
+
     this.planService.getPlans().subscribe((data) => {
       this.plans = data;
       this.plans.forEach((plan, index) => {
@@ -60,7 +73,14 @@ export class PlansComponent {
 
   emitirInformacao(path: string) {
     this.activePath = path;
+    if(this.isMobile) this.closePlans.emit();
     this.sendPath.emit(path);
+  }
+
+  ngOnDestroy(): void {
+    if (this.mobileSubscription) {
+      this.mobileSubscription.unsubscribe();
+    }
   }
 
   getSafeSvgUrl(url: string) {

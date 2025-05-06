@@ -13,6 +13,7 @@ interface ComponentMap {
 export class HomeComponent implements OnInit {
   componenteDinamico: any;
   variavelDeControle: string = 'contribution';
+  showPlans: boolean = false;
 
   constructor() {}
 
@@ -23,6 +24,10 @@ export class HomeComponent implements OnInit {
   showPlan(path: string) {
     this.variavelDeControle = path;
     this.atualizarComponenteDinamico();
+  }
+
+  handleComponentPlans() {
+    this.showPlans = !this.showPlans;
   }
 
   atualizarComponenteDinamico() {
@@ -40,5 +45,4 @@ export class HomeComponent implements OnInit {
 
     this.componenteDinamico = componentMap[this.variavelDeControle] ?? null;
   }
-
 }

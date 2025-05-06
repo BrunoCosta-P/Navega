@@ -2,15 +2,19 @@
   <app-header class="header-home" />
 </header>
 <main>
-  <app-navbar class="navbar-home" />
+  <app-navbar class="navbar-home" (showPlans)="handleComponentPlans()" />
 
   <section class="home-container">
-    <app-plans class="plans-home" (sendPath)="showPlan($event)" />
+    <app-plans
+      class="plans-home"
+      [class.close] ="!showPlans"
+      [class.open] ="showPlans"
+      (closePlans)="handleComponentPlans()"
+      (sendPath)="showPlan($event)"
+    />
 
     <div class="contribution-home">
-      <ng-container
-        [ngComponentOutlet]="componenteDinamico"
-      ></ng-container>
+      <ng-container [ngComponentOutlet]="componenteDinamico"></ng-container>
     </div>
   </section>
 </main>

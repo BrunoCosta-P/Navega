@@ -43,9 +43,22 @@ main {
 
   main {
     padding: 0 2rem;
+    position: relative;
     .home-container {
-      .plans-home {
+      .close {
         display: none;
+      }
+
+      .open {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        min-height: 99vh;
+        background-color: @color-white-100;
+        border: solid 1px @color-gray-50;
+        border-radius: 0 4px 4px 0;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1)
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ResponsivenessService } from '../../shared/services/responsiveness.service';
 
@@ -8,6 +8,7 @@ import { ResponsivenessService } from '../../shared/services/responsiveness.serv
   styleUrls: ['./navbar.component.less'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+   @Output() showPlans = new EventEmitter<string>();
   isMobile: boolean = false;
   private mobileSubscription: Subscription | undefined;
 
@@ -25,5 +26,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (this.mobileSubscription) {
       this.mobileSubscription.unsubscribe();
     }
+  }
+
+  handleClick(){
+    this.showPlans.emit()
   }
 }

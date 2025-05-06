@@ -3,5 +3,9 @@
     <p>Your browser does not support SVGs. Please use a modern browser.</p>
   </object>
   <span class="svg-breadcrumb" *ngIf="!isMobile">Meu Plano</span>
-  <span  class="svg-breadcrumb" *ngIf="isMobile">Contribuições</span>
+  <span 
+    class="svg-breadcrumb" 
+    (click)="handleClick()" 
+    (keydown.enter)="handleClick()" 
+    *ngIf="isMobile">Contribuições</span>
 </main>
